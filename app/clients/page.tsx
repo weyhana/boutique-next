@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import DataTable, { Avatar, Badge, Column } from "@/components/DataTable";
 import PageHeader from "@/components/PageHeader";
 import StatCard from "@/components/StatCard";
@@ -69,6 +70,14 @@ export default function ClientsPage() {
         emoji="👥"
         title="Clients"
         subtitle="Tous vos clients et leurs coordonnées."
+        action={
+          <Link
+            href="/clients/nouveau"
+            className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-indigo-600 to-fuchsia-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-300/50 transition hover:-translate-y-0.5 hover:brightness-110"
+          >
+            + Ajouter un client
+          </Link>
+        }
       />
 
       <div className="mb-8 grid gap-4 sm:grid-cols-2">
@@ -89,6 +98,7 @@ export default function ClientsPage() {
         onDelete={supprimer}
         loading={loading}
         itemName="client"
+        editHref={(c) => `/clients/${c.IdClient}/modifier`}
       />
     </main>
   );

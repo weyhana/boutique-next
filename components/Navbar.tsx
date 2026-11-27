@@ -20,7 +20,7 @@ export default function Navbar() {
             🛍️
           </span>
           <span className="hidden text-lg font-extrabold tracking-tight text-slate-900 sm:inline">
-            Teranga<span className="text-indigo-600">Shop</span>
+            Weyhana<span className="text-indigo-600">Shop</span>
           </span>
         </Link>
 

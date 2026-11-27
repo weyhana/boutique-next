@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -22,8 +23,22 @@ export default function RootLayout({
   return (
     <html lang="fr" className={jakarta.variable}>
       <body className="flex min-h-screen flex-col antialiased">
-        <Navbar />
-        <div className="flex-1">{children}</div>
+        <Suspense
+          fallback={
+            <header className="h-16.25 border-b border-white/60 bg-white/70" />
+          }
+        >
+          <Navbar />
+        </Suspense>
+
+        <div className="flex-1">
+          <Suspense
+            fallback={<p className="p-8 text-slate-500">Chargement...</p>}
+          >
+            {children}
+          </Suspense>
+        </div>
+
         <Footer />
       </body>
     </html>

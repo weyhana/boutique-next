@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import DataTable, { Avatar, Badge, Column } from "@/components/DataTable";
 import PageHeader from "@/components/PageHeader";
 import StatCard from "@/components/StatCard";
@@ -84,6 +85,14 @@ export default function ProduitsPage() {
         emoji="📦"
         title="Produits"
         subtitle="Votre catalogue et l'état de vos stocks."
+        action={
+          <Link
+            href="/produits/nouveau"
+            className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-indigo-600 to-fuchsia-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-300/50 transition hover:-translate-y-0.5 hover:brightness-110"
+          >
+            + Ajouter un produit
+          </Link>
+        }
       />
 
       <div className="mb-8 grid gap-4 sm:grid-cols-3">
@@ -110,6 +119,7 @@ export default function ProduitsPage() {
         onDelete={supprimer}
         loading={loading}
         itemName="produit"
+        editHref={(p) => `/produits/${p.id_produit}/modifier`}
       />
     </main>
   );
